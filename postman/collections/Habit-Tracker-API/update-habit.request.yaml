@@ -1,0 +1,16 @@
+$kind: http-request
+name: Update Habit
+method: PUT
+url: '{{baseUrl}}/habits/{{habitId}}'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "habit_name": "Reading Books",
+      "category": "Learning",
+      "frequency": "Weekly"
+    }

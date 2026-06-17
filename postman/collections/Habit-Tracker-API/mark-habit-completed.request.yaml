@@ -1,0 +1,14 @@
+$kind: http-request
+name: Mark Habit Completed
+method: PATCH
+url: '{{baseUrl}}/habits/{{habitId}}/status'
+order: 6000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "status": "Completed"
+    }

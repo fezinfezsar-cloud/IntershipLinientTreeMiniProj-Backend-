@@ -39,7 +39,7 @@
 ],
 "body": {
 "mode": "raw",
-"raw": "{\n  "habit_name": "Reading",\n  "category": "Learning",\n  "frequency": "Daily",\n  "start_date": "2026-06-17"\n}"
+"raw": "{\n  \"habit_name\": \"Reading\",\n  \"category\": \"Learning\",\n  \"frequency\": \"Daily\",\n  \"start_date\": \"2026-06-17\"\n}"
 },
 "url": {
 "raw": "{{baseUrl}}/habits",
@@ -71,7 +71,7 @@
 ],
 "body": {
 "mode": "raw",
-"raw": "{\n  "habit_name": "Reading Books",\n  "category": "Learning",\n  "frequency": "Weekly"\n}"
+"raw": "{\n  \"habit_name\": \"Reading Books\",\n  \"category\": \"Learning\",\n  \"frequency\": \"Weekly\"\n}"
 },
 "url": {
 "raw": "{{baseUrl}}/habits/{{habitId}}",
@@ -103,7 +103,7 @@
 ],
 "body": {
 "mode": "raw",
-"raw": "{\n  "status": "Completed"\n}"
+"raw": "{\n  \"status\": \"Completed\"\n}"
 },
 "url": {
 "raw": "{{baseUrl}}/habits/{{habitId}}/status",
@@ -124,7 +124,7 @@
 ],
 "body": {
 "mode": "raw",
-"raw": "{\n  "status": "Pending"\n}"
+"raw": "{\n  \"status\": \"Pending\"\n}"
 },
 "url": {
 "raw": "{{baseUrl}}/habits/{{habitId}}/status",

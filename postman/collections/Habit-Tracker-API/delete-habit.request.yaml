@@ -1,0 +1,5 @@
+$kind: http-request
+name: Delete Habit
+method: DELETE
+url: '{{baseUrl}}/habits/{{habitId}}'
+order: 5000

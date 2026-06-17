@@ -1,0 +1,8 @@
+$kind: collection
+name: Habit Tracker API
+description: CRUD routes for the habits table via Supabase
+variables:
+  - key: baseUrl
+    value: 'http://localhost:3000'
+  - key: habitId
+    value: '1'

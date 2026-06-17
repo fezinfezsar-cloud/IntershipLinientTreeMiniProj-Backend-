@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Habit By ID
+method: GET
+url: '{{baseUrl}}/habits/{{habitId}}'
+order: 3000

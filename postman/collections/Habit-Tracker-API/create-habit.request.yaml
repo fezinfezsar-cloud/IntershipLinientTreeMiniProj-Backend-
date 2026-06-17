@@ -1,0 +1,17 @@
+$kind: http-request
+name: Create Habit
+method: POST
+url: '{{baseUrl}}/habits'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "habit_name": "Reading",
+      "category": "Learning",
+      "frequency": "Daily",
+      "start_date": "2026-06-17"
+    }
