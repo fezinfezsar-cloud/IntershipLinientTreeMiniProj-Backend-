@@ -1,52 +1,54 @@
 const supabase = require("../config/supabase");
 
-// Get all habits of a user
-const getUserHabits = async (req, res) => {
-  const { userId } = req.params;
-
+// GET /habits
+const getHabits = async (req, res) => {
   const { data, error } = await supabase
     .from("habits")
     .select("*")
-    .eq("user_id", userId);
+    .order("id");
 
   if (error) {
-    return res.status(400).json(error);
+    return res.status(500).json(error);
   }
 
-  res.json(data);
+  res.status(200).json(data);
 };
 
-// Get one habit of a user
+// GET /habits/:id
 const getHabitById = async (req, res) => {
-  const { userId, habitId } = req.params;
+  const { id } = req.params;
 
   const { data, error } = await supabase
     .from("habits")
     .select("*")
-    .eq("id", habitId)
-    .eq("user_id", userId)
+    .eq("id", id)
     .single();
 
   if (error) {
     return res.status(404).json(error);
   }
 
-  res.json(data);
+  res.status(200).json(data);
 };
 
-// Create habit for user
+// POST /habits
 const createHabit = async (req, res) => {
-  const { userId } = req.params;
-
-  const { name, streak } = req.body;
+  const {
+    habit_name,
+    category,
+    frequency,
+    start_date,
+  } = req.body;
 
   const { data, error } = await supabase
     .from("habits")
     .insert([
       {
-        name,
-        streak,
-        user_id: userId,
+        habit_name,
+        category,
+        frequency,
+        start_date,
+        status: "Pending",
       },
     ])
     .select();
@@ -58,47 +60,64 @@ const createHabit = async (req, res) => {
   res.status(201).json(data);
 };
 
-// Update habit
+// PUT /habits/:id
 const updateHabit = async (req, res) => {
-  const { userId, habitId } = req.params;
+  const { id } = req.params;
 
   const { data, error } = await supabase
     .from("habits")
     .update(req.body)
-    .eq("id", habitId)
-    .eq("user_id", userId)
+    .eq("id", id)
     .select();
 
   if (error) {
     return res.status(400).json(error);
   }
 
-  res.json(data);
+  res.status(200).json(data);
 };
 
-// Delete habit
+// DELETE /habits/:id
 const deleteHabit = async (req, res) => {
-  const { userId, habitId } = req.params;
+  const { id } = req.params;
 
   const { error } = await supabase
     .from("habits")
     .delete()
-    .eq("id", habitId)
-    .eq("user_id", userId);
+    .eq("id", id);
 
   if (error) {
     return res.status(400).json(error);
   }
 
-  res.json({
+  res.status(200).json({
     message: "Habit deleted successfully",
   });
 };
 
+// PATCH /habits/:id/status
+const updateStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const { data, error } = await supabase
+    .from("habits")
+    .update({ status })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    return res.status(400).json(error);
+  }
+
+  res.status(200).json(data);
+};
+
 module.exports = {
-  getUserHabits,
+  getHabits,
   getHabitById,
   createHabit,
   updateHabit,
   deleteHabit,
+  updateStatus,
 };
