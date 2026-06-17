@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require("express");
+const userRoutes = require("./routes/userRoutes");
+
 const app = express();
-const PORT = 3000;
+
 app.use(express.json());
-app.get('/', (req, res) => {
- res.json({
- message: 'Welcome to the Internship API Server'
- });
-});
-app.listen(PORT, () => {
- console.log(`Server running at http://localhost:${PORT}`);
+
+app.use("/users", userRoutes);
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });

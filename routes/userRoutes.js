@@ -1,23 +1,30 @@
 const express = require("express");
 const router = express.Router();
-const HabitController = require("../controllers/habitController");
 
-// Get all habits
-router.get("/", HabitController.getAllHabits);
+const {
+  getUsers,
+  getUserById,
+  createUser,
+} = require("../controllers/userController");
 
-// Get a single habit by ID
-router.get("/:id", HabitController.getHabitById);
+const {
+  getUserHabits,
+  getHabitById,
+  createHabit,
+  updateHabit,
+  deleteHabit,
+} = require("../controllers/habitController");
 
-// Create a new habit
-router.post("/", HabitController.createHabit);
+// User routes
+router.get("/", getUsers);
+router.get("/:userId", getUserById);
+router.post("/", createUser);
 
-// Update a habit by ID
-router.put("/:id", HabitController.updateHabit);
-
-// Delete a habit by ID
-router.delete("/:id", HabitController.deleteHabit);
-
-// Get all habits of a specific user
-router.get("/user/:userId", HabitController.getHabitsByUserId);
+// Habit routes nested under users
+router.get("/:userId/habits", getUserHabits);
+router.get("/:userId/habits/:habitId", getHabitById);
+router.post("/:userId/habits", createHabit);
+router.put("/:userId/habits/:habitId", updateHabit);
+router.delete("/:userId/habits/:habitId", deleteHabit);
 
 module.exports = router;
