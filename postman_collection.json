@@ -1,0 +1,137 @@
+{
+"info": {
+"_postman_id": "habit-tracker-api",
+"name": "Habit Tracker API",
+"description": "CRUD routes for the habits table via Supabase",
+"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+},
+"variable": [
+{
+"key": "baseUrl",
+"value": "http://localhost:3000"
+},
+{
+"key": "habitId",
+"value": "1"
+}
+],
+"item": [
+{
+"name": "Get All Habits",
+"request": {
+"method": "GET",
+"url": {
+"raw": "{{baseUrl}}/habits",
+"host": ["{{baseUrl}}"],
+"path": ["habits"]
+}
+}
+},
+{
+"name": "Create Habit",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  "habit_name": "Reading",\n  "category": "Learning",\n  "frequency": "Daily",\n  "start_date": "2026-06-17"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/habits",
+"host": ["{{baseUrl}}"],
+"path": ["habits"]
+}
+}
+},
+{
+"name": "Get Habit By ID",
+"request": {
+"method": "GET",
+"url": {
+"raw": "{{baseUrl}}/habits/{{habitId}}",
+"host": ["{{baseUrl}}"],
+"path": ["habits", "{{habitId}}"]
+}
+}
+},
+{
+"name": "Update Habit",
+"request": {
+"method": "PUT",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  "habit_name": "Reading Books",\n  "category": "Learning",\n  "frequency": "Weekly"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/habits/{{habitId}}",
+"host": ["{{baseUrl}}"],
+"path": ["habits", "{{habitId}}"]
+}
+}
+},
+{
+"name": "Delete Habit",
+"request": {
+"method": "DELETE",
+"url": {
+"raw": "{{baseUrl}}/habits/{{habitId}}",
+"host": ["{{baseUrl}}"],
+"path": ["habits", "{{habitId}}"]
+}
+}
+},
+{
+"name": "Mark Habit Completed",
+"request": {
+"method": "PATCH",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  "status": "Completed"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/habits/{{habitId}}/status",
+"host": ["{{baseUrl}}"],
+"path": ["habits", "{{habitId}}", "status"]
+}
+}
+},
+{
+"name": "Mark Habit Pending",
+"request": {
+"method": "PATCH",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  "status": "Pending"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/habits/{{habitId}}/status",
+"host": ["{{baseUrl}}"],
+"path": ["habits", "{{habitId}}", "status"]
+}
+}
+}
+]
+}

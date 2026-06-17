@@ -8,7 +8,7 @@ const {
   updateHabit,
   deleteHabit,
   updateStatus,
-} = require("../controllers/HabitController");
+} = require("../Controllers/HabitController");
 
 router.get("/", getHabits);
 router.get("/:id", getHabitById);
